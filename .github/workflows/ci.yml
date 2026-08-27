@@ -43,12 +43,18 @@ jobs:
         run: dotnet pack src/GameShared/GameShared.csproj --configuration Release -p:PackageVersion=${{ steps.version.outputs.VERSION }} --output ./artifacts
       - name: Publish to GitHub Packages
         run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
-      - name: Notify dependents
+      - name: Notify game-server
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.DISPATCH_TOKEN }}
+          repository: ${{ github.repository_owner }}/game-server
           event-type: game-shared-published
           client-payload: '{"version": "${{ steps.version.outputs.VERSION }}"}'
-          repositories: |
-            ${{ github.repository_owner }}/game-server
-            ${{ github.repository_owner }}/game-client
+
+      - name: Notify game-client
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
+          repository: ${{ github.repository_owner }}/game-client
+          event-type: game-shared-published
+          client-payload: '{"version": "${{ steps.version.outputs.VERSION }}"}'
