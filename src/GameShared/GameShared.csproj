@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>GameShared</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Eduardo Calderon</Authors>
+    <Description>Shared types for the game client and server</Description>
+  </PropertyGroup>
+</Project>
