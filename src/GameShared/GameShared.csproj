@@ -6,7 +6,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <RootNamespace>MetaFramework</RootNamespace>
     <PackageId>GameShared</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Eduardo Calderon</Authors>
     <Description>Meta-gameplay framework shared contract, models and pure logic (Unity + server)</Description>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
